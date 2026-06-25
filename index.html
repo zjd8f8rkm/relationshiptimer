@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Timer Since June 25, 2026</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; margin-top: 50px; }
+        #timer-display { font-size: 2em; font-weight: bold; }
+        #labels { font-weight: normal; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+    <div id="timer-display">0 Years, 0 Months, 0 Weeks, 0 Days, 0 Hours, 0 Minutes, 0 Seconds</div>
+    <div id="labels">time</div>
+
+    <script>
+        function updateTimer() {
+            const startDate = new Date("2026-06-25T00:00:00");
+            const now = new Date();
+            let diff = now - startDate;
+
+            if (diff < 0) {
+                document.getElementById("timer-display").innerText = "Timer has not started yet.";
+                return;
+            }
+
+            let seconds = Math.floor(diff / 1000);
+            let minutes = Math.floor(seconds / 60);
+            let hours = Math.floor(minutes / 60);
+            let days = Math.floor(hours / 24);
+            
+            let years = Math.floor(days / 365);
+            days %= 365;
+            let months = Math.floor(days / 30);
+            days %= 30;
+            let weeks = Math.floor(days / 7);
+            days %= 7;
+            
+            hours %= 24;
+            minutes %= 60;
+            seconds %= 60;
+
+            document.getElementById("timer-display").innerText = 
+                `${years} Years, ${months} Months, ${weeks} Weeks, ${days} Days, ${hours} Hours, ${minutes} Minutes, ${seconds} Seconds`;
+        }
+
+        setInterval(updateTimer, 1000);
+        updateTimer();
+    </script>
+</body>
+</html>
+
