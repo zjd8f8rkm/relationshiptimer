@@ -2,17 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Timer Since June 25, 2026</title>
+    <title>I LOVE YOUUU</title>
     <style>
         body { font-family: sans-serif; text-align: center; margin-top: 50px; }
-        #timer-display { font-size: 2em; font-weight: bold; }
-        #labels { font-weight: normal; margin-top: 10px; }
+        #description { font-weight: normal; }
+        #timer-display { font-size: 1.5em; margin: 10px 0; }
+        #label { font-weight: bold; }
     </style>
 </head>
 <body>
 
-    <div id="timer-display">0 Years, 0 Months, 0 Weeks, 0 Days, 0 Hours, 0 Minutes, 0 Seconds</div>
-    <div id="labels">time</div>
+    <div id="description">Time elapsed since June 25, 2026:</div>
+    <div id="timer-display">Loading...</div>
+    <div id="label">time</div>
 
     <script>
         function updateTimer() {
@@ -25,21 +27,22 @@
                 return;
             }
 
-            let seconds = Math.floor(diff / 1000);
-            let minutes = Math.floor(seconds / 60);
-            let hours = Math.floor(minutes / 60);
-            let days = Math.floor(hours / 24);
+            // Calculations
+            let totalSeconds = Math.floor(diff / 1000);
+            let totalMinutes = Math.floor(totalSeconds / 60);
+            let totalHours = Math.floor(totalMinutes / 60);
+            let totalDays = Math.floor(totalHours / 24);
             
-            let years = Math.floor(days / 365);
-            days %= 365;
-            let months = Math.floor(days / 30);
-            days %= 30;
-            let weeks = Math.floor(days / 7);
-            days %= 7;
+            let years = Math.floor(totalDays / 365);
+            let remainingDays = totalDays % 365;
+            let months = Math.floor(remainingDays / 30);
+            remainingDays %= 30;
+            let weeks = Math.floor(remainingDays / 7);
+            let days = remainingDays % 7;
             
-            hours %= 24;
-            minutes %= 60;
-            seconds %= 60;
+            let hours = totalHours % 24;
+            let minutes = totalMinutes % 60;
+            let seconds = totalSeconds % 60;
 
             document.getElementById("timer-display").innerText = 
                 `${years} Years, ${months} Months, ${weeks} Weeks, ${days} Days, ${hours} Hours, ${minutes} Minutes, ${seconds} Seconds`;
@@ -50,4 +53,3 @@
     </script>
 </body>
 </html>
-
