@@ -4,17 +4,62 @@
     <meta charset="UTF-8">
     <title>I LOVE YOUUU</title>
     <style>
-        body { font-family: sans-serif; text-align: center; margin-top: 50px; }
-        #description { font-weight: normal; }
-        #timer-display { font-size: 1.4em; margin: 10px 0; }
-        #label { font-weight: bold; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0a192f;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #112240;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            border: 1px solid #233554;
+        }
+
+        #description {
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            color: #64ffda;
+        }
+
+        #timer-display {
+            font-size: 1.8em;
+            font-weight: bold;
+            margin: 15px 0;
+            color: #ffffff;
+            letter-spacing: 1px;
+        }
+
+        #label {
+            font-size: 1.3em;
+            margin-top: 20px;
+            color: #ff79c6;
+        }
+
+        .heart {
+            color: #ff4d4d;
+            font-size: 1.5em;
+        }
     </style>
 </head>
 <body>
 
-    <div id="description">Time since we've been together:</div>
-    <div id="timer-display">Loading...</div>
-    <div id="label">But i love you and i always love you<3</div>
+    <div class="container">
+        <div id="description">Time since we've been together:</div>
+        <div id="timer-display">Loading...</div>
+        <div id="label">
+            <span class="heart">❤</span> But I love you and I always love you <span class="heart">❤</span>
+        </div>
+    </div>
 
     <script>
         function updateTimer() {
@@ -23,11 +68,10 @@
             let diff = now - startDate;
 
             if (diff < 0) {
-                document.getElementById("timer-display").innerText = "Timer has not started yet.";
+                document.getElementById("timer-display").innerText = "Our journey is just about to begin!";
                 return;
             }
 
-            // Calculations
             let totalSeconds = Math.floor(diff / 1000);
             let totalMinutes = Math.floor(totalSeconds / 60);
             let totalHours = Math.floor(totalMinutes / 60);
@@ -45,7 +89,7 @@
             let seconds = totalSeconds % 60;
 
             document.getElementById("timer-display").innerText = 
-                `${years} Years, ${months} Months, ${weeks} Weeks, ${days} Days, ${hours} Hours, ${minutes} Minutes, ${seconds} Seconds`;
+                `${years}Y, ${months}M, ${weeks}W, ${days}D, ${hours}H, ${minutes}M, ${seconds}S`;
         }
 
         setInterval(updateTimer, 1000);
